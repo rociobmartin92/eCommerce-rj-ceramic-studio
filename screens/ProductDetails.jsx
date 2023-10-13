@@ -16,6 +16,7 @@ import { Colors } from 'react-native/Libraries/NewAppScreen';
 import { Avatar, Button } from 'react-native-paper';
 import { Toast } from 'react-native-toast-message/lib/src/Toast';
 import { useSelector } from 'react-redux';
+import FooterData from '../components/FooterData';
 
 const SLIDER_WIDTH = Dimensions.get('window').width;
 const ITEM_WIDTH = SLIDER_WIDTH;
@@ -130,7 +131,7 @@ console.log(stock)
           }}
         >
           <Text style={{ color: colors.color3, fontWeight: '100' }}>
-            Quantity
+            Cantidad
           </Text>
           <View
             style={{
@@ -156,10 +157,11 @@ console.log(stock)
           onPress={addToCartHandler}
         >
           <Button icon={'cart'} textColor={colors.color2}>
-            Add To Cart
+           Añadir al carrito
           </Button>
         </TouchableOpacity>
       </View>
+      <FooterData />
     </View>
   );
 };

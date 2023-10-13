@@ -1,30 +1,51 @@
-import React, { useState } from 'react';
-import { ScrollView, StyleSheet, Text, View } from 'react-native';
-import { Button, TextInput } from 'react-native-paper';
-import Header from '../components/Header';
+import React, { useState } from "react";
+import { ScrollView, StyleSheet, Text, View } from "react-native";
+import { Button, TextInput } from "react-native-paper";
+import Header from "../components/Header";
 import {
   colors,
   defaultStyle,
   formHeading,
   inputOptions,
-} from '../styles/styles';
+} from "../styles/styles";
+import { useDispatch } from "react-redux";
+import {
+  setAddress,
+  setCity,
+  setCountry,
+  setEmail,
+  setName,
+  setPinCode,
+} from "../redux/slices/userSlice";
 
 const UpdateProfile = () => {
-  const [email, setEmail] = useState('');
-  const [name, setName] = useState('');
-  const [address, setAddress] = useState('');
-  const [city, setCity] = useState('');
-  const [country, setCountry] = useState('');
-  const [pinCode, setPinCode] = useState('');
+  const [userEmail, setuserEmail] = useState("");
+  const [userName, setUserName] = useState("");
+  const [userAddress, setUserAddress] = useState("");
+  const [userCity, setUserCity] = useState("");
+  const [userCountry, setUserCountry] = useState("");
+  const [userPinCode, setuserPinCode] = useState("");
+  const dispatch = useDispatch();
 
   const loading = false;
 
   const submitHandler = () => {
-    alert('Yeah');
+    alert("Tus datos han sido actualizados");
+    dispatch(setEmail(userEmail));
+    dispatch(setName(userName));
+    dispatch(setCity(userCity));
+    dispatch(setAddress(userAddress));
+    dispatch(setCountry(userCountry));
+    dispatch(setPinCode(userPinCode));
   };
 
   const disableBtn =
-    !name || !email || !address || !city || !country || !pinCode;
+    !userName ||
+    !userEmail ||
+    !userAddress ||
+    !userCity ||
+    !userCountry ||
+    !userPinCode;
 
   return (
     <View style={{ ...defaultStyle, backgroundColor: colors.color2 }}>
@@ -46,41 +67,41 @@ const UpdateProfile = () => {
         <View>
           <TextInput
             {...inputOptions}
-            placeholder='Name'
-            value={name}
-            onChangeText={setName}
+            placeholder="Name"
+            value={userName}
+            onChangeText={setUserName}
           />
           <TextInput
             {...inputOptions}
-            placeholder='Email'
-            value={email}
-            onChangeText={setEmail}
-            keyboardType='email-address'
+            placeholder="Email"
+            value={userEmail}
+            onChangeText={setuserEmail}
+            keyboardType="email-address"
           />
           <TextInput
             {...inputOptions}
-            placeholder='Address'
-            value={address}
-            onChangeText={setAddress}
+            placeholder="Address"
+            value={userAddress}
+            onChangeText={setUserAddress}
           />
           <TextInput
             {...inputOptions}
-            placeholder='City'
-            value={city}
-            onChangeText={setCity}
+            placeholder="City"
+            value={userCity}
+            onChangeText={setUserCity}
           />
           <TextInput
             {...inputOptions}
-            placeholder='Country'
-            value={country}
-            onChangeText={setCountry}
+            placeholder="Country"
+            value={userCountry}
+            onChangeText={setUserCountry}
           />
 
           <TextInput
             {...inputOptions}
-            placeholder='Pin Code'
-            value={pinCode}
-            onChangeText={setPinCode}
+            placeholder="Pin Code"
+            value={userPinCode}
+            onChangeText={setuserPinCode}
           />
 
           <Button
@@ -90,7 +111,7 @@ const UpdateProfile = () => {
             onPress={submitHandler}
             loading={loading}
           >
-            Update
+            Actualizar
           </Button>
         </View>
       </ScrollView>
@@ -104,7 +125,7 @@ const styles = StyleSheet.create({
     padding: 20,
     backgroundColor: colors.color3,
     borderRadius: 10,
-    justifyContent: 'center',
+    justifyContent: "center",
     elevation: 10,
   },
 
@@ -114,18 +135,18 @@ const styles = StyleSheet.create({
     padding: 5,
   },
   or: {
-    alignSelf: 'center',
+    alignSelf: "center",
     fontSize: 20,
-    fontWeight: '100',
+    fontWeight: "100",
     color: colors.color2,
   },
   link: {
     color: colors.color2,
-    alignSelf: 'center',
+    alignSelf: "center",
     fontSize: 18,
     marginVertical: 10,
     marginHorizontal: 20,
-    textTransform: 'uppercase',
+    textTransform: "uppercase",
   },
 });
 

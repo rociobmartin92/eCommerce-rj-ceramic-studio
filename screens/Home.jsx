@@ -9,12 +9,13 @@ import SearchModal from "../components/SearchModal";
 import ProductCard from "../components/ProductCard";
 import Footer from "../components/Footer";
 import Heading from "../components/Heading";
+import FooterData from "../components/FooterData";
 
 const categories = [
-  { category: "makeup", _id: 1 },
-  { category: "skincare", _id: 2 },
-  { category: "fragance", _id: 3 },
-  { category: "accessories", _id: 4 },
+  { category: "tazas", _id: 1 },
+  { category: "platos", _id: 2 },
+  { category: "mates", _id: 3 },
+  { category: "masetas", _id: 4 },
 ];
 export const products = [
   {
@@ -136,7 +137,7 @@ const Home = () => {
           }}
         >
           {/* Main Heading */}
-          <Heading text1={"Our"} text2={"Products"} />
+          <Heading text1={"Nuestros"} text2={"Trabajos"} />
 
           {/* Searchbar */}
           <View>
@@ -214,12 +215,25 @@ const Home = () => {
                  />
                )
              }
+             if (!category) {
+              return (
+                <ProductCard
+                  key={item._id}
+                  i={index}
+                 item={item}
+                  addToCartHandler={addToCartHandler}
+                  navigate={navigate}
+                  stock={item.stock}
+                />
+              )
+             }
             })}
           </ScrollView>
         </View>
       </View>
 
       <Footer activeRoute={"home"} />
+   <FooterData />
     </>
   );
 };

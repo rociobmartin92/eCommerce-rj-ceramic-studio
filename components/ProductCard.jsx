@@ -38,13 +38,14 @@ const dispatch = useDispatch()
             width: "100%",
             height: 200,
             resizeMode: "contain",
-            position: "absolute",
-            left: 50,
-            top: 105,
+            marginTop: 10
+            // position: "absolute",
+            // left: 50,
+            // top: 105,
           }}
         />
 
-        <View
+        {/* <View
           style={{
             flexDirection: "row",
             padding: 10,
@@ -52,19 +53,19 @@ const dispatch = useDispatch()
             width: "100%",
             // alignItems: 'center',
           }}
-        >
+        > */}
           <Text
-            numberOfLines={2}
+            // numberOfLines={2}
             style={{
               color: i % 2 === 0 ? colors.color2 : colors.color3,
               fontSize: 22,
               fontWeight: "300",
-              width: "60%",
+          paddingHorizontal: 10
             }}
           >
             {name}
           </Text>
-          <Text
+          {/* <Text
             numberOfLines={2}
             style={{
               color: i % 2 === 0 ? colors.color2 : colors.color3,
@@ -73,8 +74,8 @@ const dispatch = useDispatch()
             }}
           >
             ${price}
-          </Text>
-        </View>
+          </Text> */}
+        {/* </View> */}
         <TouchableOpacity
           style={{
             backgroundColor: i % 2 === 0 ? colors.color2 : colors.color3,
@@ -88,7 +89,7 @@ const dispatch = useDispatch()
             textColor={i % 2 === 0 ? colors.color1 : colors.color2}
             onPress={() => addToCartHandler(id, stock)}
           >
-            Add To Cart
+            Ver más
           </Button>
         </TouchableOpacity>
       </View>

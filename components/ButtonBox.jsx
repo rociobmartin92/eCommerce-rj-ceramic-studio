@@ -16,7 +16,7 @@ const ButtonBox = ({
       style={{
         backgroundColor: reverse ? colors.color1 : colors.color3,
         height: 80,
-        width: 80,
+        width: 90,
         borderRadius: 20,
         alignItems: 'center',
       }}

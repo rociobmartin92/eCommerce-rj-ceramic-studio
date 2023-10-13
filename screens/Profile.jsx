@@ -5,35 +5,39 @@ import { Avatar, Button } from 'react-native-paper';
 import ButtonBox from '../components/ButtonBox';
 import Footer from '../components/Footer';
 import Loader from '../components/Loader';
+import { useSelector } from 'react-redux';
 
-const user = {
-  name: 'John',
-  email: 'john@example.com',
-};
+
+
 
 const logoutHandler = () => {
   console.log('sign out');
 };
 
+
+
 const Profile = ({ navigation, route }) => {
   const [avatar, setAvatar] = useState(null);
   const loading = false;
+
+
+const email = useSelector(state => state.userSlice.email)
 
   const navigateHandler = (text) => {
     switch (text) {
       case 'Admin':
         navigation.navigate('adminpanel');
         break;
-      case 'Orders':
+      case 'Ordenes':
         navigation.navigate('orders');
         break;
-      case 'Profile':
+      case 'Perfil':
         navigation.navigate('updateprofile');
         break;
-      case 'Password':
+      case 'Contraseña':
         navigation.navigate('changepassword');
         break;
-      case 'Sign Out':
+      case 'Salir':
         logoutHandler();
         break;
 
@@ -78,14 +82,14 @@ const Profile = ({ navigation, route }) => {
                 <Button textColor={colors.color2}>Change Photo</Button>
               </TouchableOpacity>
 
-              <Text style={styles.name}>{user?.name}</Text>
+              <Text style={styles.name}>{email}</Text>
               <Text
                 style={{
                   fontWeight: '300',
                   color: colors.color2,
                 }}
               >
-                {user?.email}
+                {email}
               </Text>
             </View>
 
@@ -99,7 +103,7 @@ const Profile = ({ navigation, route }) => {
               >
                 <ButtonBox
                   handler={navigateHandler}
-                  text={'Orders'}
+                  text={'Ordenes'}
                   icon={'format-list-bulleted-square'}
                 />
                 <ButtonBox
@@ -110,7 +114,7 @@ const Profile = ({ navigation, route }) => {
                 />
                 <ButtonBox
                   handler={navigateHandler}
-                  text={'Profile'}
+                  text={'Perfil'}
                   icon={'pencil'}
                 />
               </View>
@@ -123,12 +127,12 @@ const Profile = ({ navigation, route }) => {
               >
                 <ButtonBox
                   handler={navigateHandler}
-                  text={'Password'}
+                  text={'Contraseña'}
                   icon={'pencil'}
                 />
                 <ButtonBox
                   handler={navigateHandler}
-                  text={'Sign Out'}
+                  text={'Salir'}
                   icon={'exit-to-app'}
                 />
               </View>
