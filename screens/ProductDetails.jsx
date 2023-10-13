@@ -5,6 +5,7 @@ import {
   StyleSheet,
   Image,
   TouchableOpacity,
+  SafeAreaView,
 } from 'react-native';
 
 import React, { useRef, useState } from 'react';
@@ -81,6 +82,8 @@ console.log(stock)
   };
 
   return (
+    
+    <SafeAreaView style={{flex: 1}}>
     <View
       style={{
         ...defaultStyle,
@@ -91,7 +94,7 @@ console.log(stock)
       <Header back={true} />
 
       {/* carousel */}
-      <View style={{height: 60}}></View>
+      <View style={{height: 60, marginTop: 10}}></View>
       <Carousel
         layout='stack'
         sliderWidth={SLIDER_WIDTH}
@@ -163,6 +166,7 @@ console.log(stock)
       </View>
       <FooterData />
     </View>
+    </SafeAreaView>
   );
 };
 

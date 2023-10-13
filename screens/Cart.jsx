@@ -52,8 +52,8 @@ const Cart = () => {
       <Header emptyCart={true} back={true} />
       {/* Heading  */}
       <Heading
-        text1={'Shopping'}
-        text2={'Carrito'}
+        text1={'Carrito de'}
+        text2={'Compras'}
         containerStyle={{ marginLeft: 35, paddingTop: 70, marginTop: 35 }}
       />
 

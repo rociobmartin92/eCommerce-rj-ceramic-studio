@@ -20,79 +20,79 @@ const categories = [
 export const products = [
   {
     _id: 1,
-    name: "Labial Líquido Maybelline Superstay",
+    name: "Taza Lorem Ipsum",
     category: 1, // id of category
     price: 199,
     stock: 12,
     description: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatem neque quidem ratione?",
     images: [
       {
-        url: "https://http2.mlstatic.com/D_NQ_NP_2X_925767-MLU70461698120_072023-F.webp",
+        url: "https://i.pinimg.com/originals/70/cc/61/70cc61e9812a8bb148ee68eef39cddb7.jpg",
       },
     ],
   },
   {
     _id: 2,
-    name: "Labial Revlon Colorstay Matte",
+    name: "Taza Sunshine",
     category: 1,
     price: 23,
     stock: 1,
     description: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatem neque quidem ratione?",
     images: [
       {
-        url: "https://http2.mlstatic.com/D_NQ_NP_2X_668120-MLA54288440381_032023-F.webp",
+        url: "https://www.nomadbubbles.com/wp-content/uploads/taza-cafe-ceramica-blanca.jpg",
       },
     ],
   },
   {
     _id: 3,
-    name: "Crema Light La Roche-Posay",
+    name: "Plato roble y blanco",
     category: 2,
     price: 1654,
     stock: 3,
     description: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatem neque quidem ratione?",
     images: [
       {
-        url: "https://http2.mlstatic.com/D_NQ_NP_2X_973037-MLA54894429099_042023-F.webp",
+        url: "https://http2.mlstatic.com/D_NQ_NP_738022-MLA53444936380_012023-O.webp",
       },
     ],
   },
   {
     _id: 4,
-    name: "Avene Dermabsolu Bálsamo De Noche",
+    name: "Plato Bálsamo De Noche",
     category: 2,
     price: 19,
     stock: 6,
     description: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatem neque quidem ratione?",
     images: [
       {
-        url: "https://http2.mlstatic.com/D_NQ_NP_2X_899729-MLA51602569122_092022-F.webp",
+        url: "https://http2.mlstatic.com/D_NQ_NP_753904-MLA53444886993_012023-O.webp",
       },
     ],
   },
   {
     _id: 5,
-    name: "Dior Jadore EDP 100 ml",
+    name: "Mate Lamore",
     category: 3,
     price: 199,
     stock: 10,
     description: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatem neque quidem ratione?",
     images: [
       {
-        url: "https://http2.mlstatic.com/D_NQ_NP_2X_706785-MLA45824998631_052021-F.webp",
+        url: "https://d2r9epyceweg5n.cloudfront.net/stores/001/546/478/products/matescera1-021374837e5b7b22d416254880278192-1024-1024.jpeg",
       },
     ],
   },
   {
     _id: 6,
-    name: "Scrunchie Satén Seda",
+    name: "Maceta beige y blanco",
     category: 4,
     price: 99,
     stock: 16,
     description: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatem neque quidem ratione?",
     images: [
       {
-        url: "https://http2.mlstatic.com/D_NQ_NP_2X_948098-MLA51004196823_082022-F.webp",
+        url: "https://acdn.mitiendanube.com/stores/001/652/601/products/fotomontajes-productos-casa_selvatica-maceta-combinada-arena-con-plato-11-563ace0dbc2e7a26fe16331021363223-640-0.jpg",
       },
     ],
   },

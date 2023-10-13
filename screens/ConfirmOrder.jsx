@@ -1,4 +1,4 @@
-import { View, Text, ScrollView, TouchableOpacity } from 'react-native';
+import { View, Text, ScrollView, TouchableOpacity, SafeAreaView } from 'react-native';
 import React from 'react';
 import { colors, defaultStyle } from '../styles/styles';
 import Header from '../components/Header';
@@ -17,13 +17,14 @@ const ConfirmOrder = () => {
   const totalAmount = itemPrice + shippingCharges + tax;
 
   return (
+    <SafeAreaView style={{flex: 1}}>
     <View style={defaultStyle}>
       <Header back={true} />
       {/* Heading */}
       <Heading
         text1={'Confirm'}
         text2={'Order'}
-        containerStyle={{ paddingTop: 70 }}
+        containerStyle={{ paddingTop: 70, marginTop: 35 }}
       />
 
       <View
@@ -71,6 +72,7 @@ const ConfirmOrder = () => {
         </Button>
       </TouchableOpacity>
     </View>
+    </SafeAreaView>
   );
 };
 
