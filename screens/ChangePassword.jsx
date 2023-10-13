@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, SafeAreaView } from 'react-native';
 import { Button, TextInput } from 'react-native-paper';
 import Header from '../components/Header';
 import {
@@ -19,24 +19,29 @@ const ChangePassword = ({ navigation }) => {
   };
 
   return (
+
+
+
+
+    <SafeAreaView style={{flex: 1}}>
     <View style={{ ...defaultStyle, backgroundColor: colors.color2 }}>
       <Header back={true} />
       {/* Heading */}
-      <View style={{ marginBottom: 20, paddingTop: 70 }}>
-        <Text style={formHeading}>Change Password</Text>
+      <View style={{ marginBottom: 20, paddingTop: 70, marginTop: 35 }}>
+        <Text style={formHeading}>Cambiar contraseña</Text>
       </View>
 
       <View style={styles.container}>
         <TextInput
           {...inputOptions}
-          placeholder='Old Password'
+          placeholder='Antigua contraseña...'
           value={oldPassword}
           secureTextEntry={true}
           onChangeText={setOldPassword}
         />
         <TextInput
           {...inputOptions}
-          placeholder='New Password'
+          placeholder='Nueva contraseña...'
           value={newPassword}
           secureTextEntry={true}
           onChangeText={setNewPassword}
@@ -49,10 +54,11 @@ const ChangePassword = ({ navigation }) => {
           onPress={submitHandler}
           loading={loading}
         >
-          Change
+          Actualizar
         </Button>
       </View>
     </View>
+    </SafeAreaView>
   );
 };
 

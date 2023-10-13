@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, SafeAreaView } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import { colors, defaultStyle, formHeading } from '../styles/styles';
 import { Avatar, Button } from 'react-native-paper';
@@ -22,6 +22,8 @@ const Profile = ({ navigation, route }) => {
 
 
 const email = useSelector(state => state.userSlice.email)
+const name = useSelector(state => state.userSlice.name)
+
 
   const navigateHandler = (text) => {
     switch (text) {
@@ -53,11 +55,11 @@ const email = useSelector(state => state.userSlice.email)
   }, [route.params]);
 
   return (
-    <>
+    <SafeAreaView style={{flex: 1}}>
       <View style={{ ...defaultStyle, backgroundColor: colors.color2 }}>
         {/* Heading */}
-        <View style={{ marginBottom: 20 }}>
-          <Text style={formHeading}>Profile</Text>
+        <View style={{ marginBottom: 50 }}>
+          {/* <Text style={formHeading}>Profile</Text> */}
         </View>
 
         {/* Loading */}
@@ -79,21 +81,21 @@ const email = useSelector(state => state.userSlice.email)
                   navigation.navigate('camera', { updateProfile: true })
                 }
               >
-                <Button textColor={colors.color2}>Change Photo</Button>
+                <Button textColor={colors.color2}>Cambiar Foto</Button>
               </TouchableOpacity>
 
-              <Text style={styles.name}>{email}</Text>
+              <Text style={styles.name}>{name ? name : "Nombre Apellido"}</Text>
               <Text
                 style={{
                   fontWeight: '300',
                   color: colors.color2,
                 }}
               >
-                {email}
+                {email ? email : "email"}
               </Text>
             </View>
 
-            <View>
+            <View style={styles.boxButton}>
               <View
                 style={{
                   flexDirection: 'row',
@@ -142,7 +144,7 @@ const email = useSelector(state => state.userSlice.email)
       </View>
 
       <Footer />
-    </>
+    </SafeAreaView>
   );
 };
 
@@ -160,6 +162,9 @@ const styles = StyleSheet.create({
     marginTop: 10,
     color: colors.color2,
   },
+  boxButton: {
+    marginTop: 10
+  }
 });
 
 export default Profile;

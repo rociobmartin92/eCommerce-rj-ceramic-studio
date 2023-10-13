@@ -6,6 +6,7 @@ import { colors, defaultStyle } from '../styles/styles';
 import { Button } from 'react-native-paper';
 import CartItem from '../components/CartItem';
 import { useNavigation } from '@react-navigation/native';
+import { SafeAreaView } from 'react-native';
 
 export const cartItems = [
   {
@@ -26,60 +27,7 @@ export const cartItems = [
     price: 2999,
     quantity: 10,
   },
-  {
-    name: 'Item 2',
-    image:
-      'https://cdn.pixabay.com/photo/2023/05/27/08/59/eastern-grey-kangaroo-8021096_1280.jpg',
-    product: 3, //id
-    stock: 5,
-    price: 2999,
-    quantity: 10,
-  },
-  {
-    name: 'Item 2',
-    image:
-      'https://cdn.pixabay.com/photo/2023/05/27/08/59/eastern-grey-kangaroo-8021096_1280.jpg',
-    product: 4, //id
-    stock: 5,
-    price: 2999,
-    quantity: 10,
-  },
-  {
-    name: 'Item 2',
-    image:
-      'https://cdn.pixabay.com/photo/2023/05/27/08/59/eastern-grey-kangaroo-8021096_1280.jpg',
-    product: 5, //id
-    stock: 5,
-    price: 2999,
-    quantity: 10,
-  },
-  {
-    name: 'Item 2',
-    image:
-      'https://cdn.pixabay.com/photo/2023/05/27/08/59/eastern-grey-kangaroo-8021096_1280.jpg',
-    product: 6, //id
-    stock: 5,
-    price: 2999,
-    quantity: 10,
-  },
-  {
-    name: 'Item 2',
-    image:
-      'https://cdn.pixabay.com/photo/2023/05/27/08/59/eastern-grey-kangaroo-8021096_1280.jpg',
-    product: 7, //id
-    stock: 5,
-    price: 2999,
-    quantity: 10,
-  },
-  {
-    name: 'Item 2',
-    image:
-      'https://cdn.pixabay.com/photo/2023/05/27/08/59/eastern-grey-kangaroo-8021096_1280.jpg',
-    product: 8, //id
-    stock: 5,
-    price: 2999,
-    quantity: 10,
-  },
+
 ];
 
 const Cart = () => {
@@ -93,6 +41,8 @@ const Cart = () => {
   };
 
   return (
+
+    <SafeAreaView style={{flex: 1}}>
     <View
       style={{
         ...defaultStyle,
@@ -103,8 +53,8 @@ const Cart = () => {
       {/* Heading  */}
       <Heading
         text1={'Shopping'}
-        text2={'Cart'}
-        containerStyle={{ marginLeft: 35, paddingTop: 70 }}
+        text2={'Carrito'}
+        containerStyle={{ marginLeft: 35, paddingTop: 70, marginTop: 35 }}
       />
 
       <View
@@ -160,6 +110,7 @@ const Cart = () => {
         </Button>
       </TouchableOpacity>
     </View>
+    </SafeAreaView>
   );
 };
 

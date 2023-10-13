@@ -1,4 +1,4 @@
-import { View, Text, ScrollView } from 'react-native';
+import { View, Text, ScrollView, SafeAreaView } from 'react-native';
 import React from 'react';
 import { colors, defaultStyle, formHeading } from '../styles/styles';
 import Header from '../components/Header';
@@ -39,9 +39,10 @@ const Orders = () => {
   const loading = false;
 
   return (
+    <SafeAreaView style={{flex: 1}}>
     <View style={{ ...defaultStyle, backgroundColor: colors.color5 }}>
       <Header back={true} />
-      <View style={{ marginBottom: 20, paddingTop: 70 }}>
+      <View style={{ marginBottom: 20, paddingTop: 70, marginTop: 35 }}>
         <Text style={formHeading}>Orders</Text>
       </View>
       {loading ? (
@@ -69,6 +70,7 @@ const Orders = () => {
         </View>
       )}
     </View>
+    </SafeAreaView>
   );
 };
 

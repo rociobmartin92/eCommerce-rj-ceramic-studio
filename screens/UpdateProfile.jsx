@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ScrollView, StyleSheet, Text, View } from "react-native";
+import { SafeAreaView, ScrollView, StyleSheet, Text, View } from "react-native";
 import { Button, TextInput } from "react-native-paper";
 import Header from "../components/Header";
 import {
@@ -18,25 +18,26 @@ import {
   setPinCode,
 } from "../redux/slices/userSlice";
 
-const UpdateProfile = () => {
+const UpdateProfile = ({navigation}) => {
   const [userEmail, setuserEmail] = useState("");
   const [userName, setUserName] = useState("");
   const [userAddress, setUserAddress] = useState("");
   const [userCity, setUserCity] = useState("");
   const [userCountry, setUserCountry] = useState("");
-  const [userPinCode, setuserPinCode] = useState("");
+  const [userPinCode, setUserPinCode] = useState("");
   const dispatch = useDispatch();
 
   const loading = false;
 
   const submitHandler = () => {
-    alert("Tus datos han sido actualizados");
     dispatch(setEmail(userEmail));
     dispatch(setName(userName));
     dispatch(setCity(userCity));
     dispatch(setAddress(userAddress));
     dispatch(setCountry(userCountry));
     dispatch(setPinCode(userPinCode));
+    alert("Tus datos han sido actualizados correctamente!");
+    navigation.navigate("profile")
   };
 
   const disableBtn =
@@ -48,11 +49,14 @@ const UpdateProfile = () => {
     !userPinCode;
 
   return (
+    
+    <SafeAreaView style={{flex: 1}}>
     <View style={{ ...defaultStyle, backgroundColor: colors.color2 }}>
+      
       <Header back={true} />
       {/* Heading */}
-      <View style={{ marginBottom: 20, paddingTop: 70 }}>
-        <Text style={formHeading}>Edit Profile</Text>
+      <View style={{ marginBottom: 20, paddingTop: 70, marginTop: 35 }}>
+        <Text style={formHeading}>Editar Perfil</Text>
       </View>
 
       <ScrollView
@@ -67,7 +71,7 @@ const UpdateProfile = () => {
         <View>
           <TextInput
             {...inputOptions}
-            placeholder="Name"
+            placeholder="Nombre"
             value={userName}
             onChangeText={setUserName}
           />
@@ -80,28 +84,28 @@ const UpdateProfile = () => {
           />
           <TextInput
             {...inputOptions}
-            placeholder="Address"
+            placeholder="Dirección"
             value={userAddress}
             onChangeText={setUserAddress}
           />
           <TextInput
             {...inputOptions}
-            placeholder="City"
+            placeholder="Ciudad"
             value={userCity}
             onChangeText={setUserCity}
           />
           <TextInput
             {...inputOptions}
-            placeholder="Country"
+            placeholder="País"
             value={userCountry}
             onChangeText={setUserCountry}
           />
 
           <TextInput
             {...inputOptions}
-            placeholder="Pin Code"
+            placeholder="Código Postal"
             value={userPinCode}
-            onChangeText={setuserPinCode}
+            onChangeText={setUserPinCode}
           />
 
           <Button
@@ -116,6 +120,7 @@ const UpdateProfile = () => {
         </View>
       </ScrollView>
     </View>
+    </SafeAreaView>
   );
 };
 

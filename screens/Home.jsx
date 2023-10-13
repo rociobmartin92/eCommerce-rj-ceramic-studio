@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity, ScrollView } from "react-native";
+import { View, Text, TouchableOpacity, ScrollView, SafeAreaView } from "react-native";
 import React, { useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 
@@ -113,7 +113,8 @@ const Home = () => {
   };
 
   return (
-    <>
+  
+    <SafeAreaView style={{flex: 1}}>
       {activeSearch && (
         <SearchModal
           searchQuery={searchQuery}
@@ -140,7 +141,7 @@ const Home = () => {
           <Heading text1={"Nuestros"} text2={"Trabajos"} />
 
           {/* Searchbar */}
-          <View>
+          {/* <View>
             <TouchableOpacity onPress={() => setActiveSearch((prev) => !prev)}>
               <Avatar.Icon
                 icon={"magnify"}
@@ -149,7 +150,7 @@ const Home = () => {
                 style={{ backgroundColor: colors.color2, elevation: 12 }}
               />
             </TouchableOpacity>
-          </View>
+          </View> */}
         </View>
 
         {/* Categories */}
@@ -233,8 +234,9 @@ const Home = () => {
       </View>
 
       <Footer activeRoute={"home"} />
-   <FooterData />
-    </>
+      <FooterData />
+    </SafeAreaView>
+
   );
 };
 

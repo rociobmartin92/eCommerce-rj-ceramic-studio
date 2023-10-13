@@ -20,11 +20,11 @@ const ForgetPassword = ({ navigation }) => {
   };
 
   return (
-    <>
+    <SafeAreaView style={{flex: 1}}>
       <View style={{ ...defaultStyle, backgroundColor: colors.color2 }}>
         {/* Heading */}
         <View style={{ marginBottom: 20 }}>
-          <Text style={formHeading}>Forget Password</Text>
+          <Text style={formHeading}>Olvidé mi contraseña</Text>
         </View>
 
         <View style={styles.container}>
@@ -57,7 +57,7 @@ const ForgetPassword = ({ navigation }) => {
         </View>
       </View>
       <Footer activeRoute='profile' />
-    </>
+    </SafeAreaView>
   );
 };
 
