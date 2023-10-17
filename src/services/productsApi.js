@@ -12,7 +12,18 @@ export const productsApi = createApi({
     getCategories: builder.query({
       query: () => "categories.json",
     }),
+    putFavorites: builder.mutation({
+      query: (body) => ({
+        url: "favorites.json",
+        method: "PUT",
+        body: body,
+      }),
+    }),
   }),
 });
 
-export const { useGetProductsQuery, useGetCategoriesQuery } = productsApi;
+export const {
+  useGetProductsQuery,
+  useGetCategoriesQuery,
+  usePutFavoritesMutation,
+} = productsApi;

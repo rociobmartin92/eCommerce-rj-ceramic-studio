@@ -1,9 +1,11 @@
-import { View, Image, Text, TouchableOpacity } from "react-native";
+import { View, Image, Text, TouchableOpacity, Pressable } from "react-native";
 import React from "react";
 import { colors } from "../styles/styles";
 import { Button } from "react-native-paper";
 import { setProduct } from "../redux/slices/productSlice";
 import { useDispatch } from "react-redux";
+import { Entypo } from '@expo/vector-icons'; 
+
 
 const ProductCard = ({ stock, item, addToCartHandler, i, navigate }) => {
   const { category, name, price, images, _id } = item;
@@ -20,6 +22,7 @@ const dispatch = useDispatch()
     >
       <View
         style={{
+          zIndex: 1,
           elevation: 5,
           width: 220,
           alignItems: "center",
@@ -30,13 +33,16 @@ const dispatch = useDispatch()
           backgroundColor: i % 2 === 0 ? colors.color1 : colors.color2,
         }}
       >
+        <Pressable style={{position: "absolute", top:10, right: 15, zIndex: 2}}>
+        <Entypo name="heart-outlined" size={24} color={ i % 2 === 0 ? colors.color2 : colors.color3} />
+        </Pressable>
         <Image
           source={{ uri: images[0]?.url }}
           style={{
             width: "100%",
             height: 200,
             resizeMode: "contain",
-            marginTop: 10
+            marginTop: 36
             // position: "absolute",
             // left: 50,
             // top: 105,
