@@ -19,6 +19,7 @@ const Home = () => {
   const [activeSearch, setActiveSearch] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const navigate = useNavigation();
+  const [favorites, setFavorites] = useState([])
 
  const {data: categories, isLoading, error} = useGetCategoriesQuery()
  const {data: products} = useGetProductsQuery()
@@ -30,6 +31,11 @@ const Home = () => {
   const addToCartHandler = (id, stock) => {
     console.log("add to cart", id, stock);
   };
+
+
+
+
+console.log("Favorites", favorites)
 
   return (
   
@@ -124,10 +130,8 @@ const Home = () => {
                  <ProductCard
                    key={item._id}
                    i={index}
-                  //  category={item.category}
-                  //  name={item.name}
-                  //  price={item.price}
-                  //  image={item.images[0]?.url}
+                   setFavorites={setFavorites}
+                   favorites={favorites}
                   item={item}
                    addToCartHandler={addToCartHandler}
                    navigate={navigate}
@@ -138,6 +142,8 @@ const Home = () => {
              if (!category) {
               return (
                 <ProductCard
+                setFavorites={setFavorites}
+                favorites={favorites}
                   key={item._id}
                   i={index}
                  item={item}

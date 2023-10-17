@@ -1,25 +1,55 @@
 import { View, Image, Text, TouchableOpacity, Pressable } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import { colors } from "../styles/styles";
 import { Button } from "react-native-paper";
 import { setProduct } from "../redux/slices/productSlice";
 import { useDispatch } from "react-redux";
-import { Entypo } from '@expo/vector-icons'; 
+import { Entypo } from "@expo/vector-icons";
 
-
-const ProductCard = ({ stock, item, addToCartHandler, i, navigate }) => {
+const ProductCard = ({
+  stock,
+  item,
+  addToCartHandler,
+  i,
+  navigate,
+  setFavorites,
+  favorites,
+}) => {
+const [favColor, setFavColor] = useState(false)
   const { category, name, price, images, _id } = item;
-const dispatch = useDispatch()
+
+  const dispatch = useDispatch();
+
+  const onHandleHeart = (product) => {
+    if (favorites.includes(product)) {
+     
+      setFavColor(false)
+     
+
+     const newFav = favorites.filter((el) => el !== product)
+
+      setFavorites(newFav)
+
+    } else {
+      const newFav = [...favorites];
+
+      newFav.push(product);
+
+      setFavColor(true)
+      setFavorites(newFav);
+    }
+  };
+
+
+
+  // console.log("Favorites", favorites)
 
   const handleOnPressProduct = () => {
-   dispatch(setProduct(item))
-    navigate.navigate("productdetails", { _id })
-  }
+    dispatch(setProduct(item));
+    navigate.navigate("productdetails", { _id });
+  };
   return (
-    <TouchableOpacity
-      onPress={() => handleOnPressProduct()}
-      activeOpacity={1}
-    >
+    <TouchableOpacity onPress={() => handleOnPressProduct()} activeOpacity={1}>
       <View
         style={{
           zIndex: 1,
@@ -33,8 +63,15 @@ const dispatch = useDispatch()
           backgroundColor: i % 2 === 0 ? colors.color1 : colors.color2,
         }}
       >
-        <Pressable style={{position: "absolute", top:10, right: 15, zIndex: 2}}>
-        <Entypo name="heart-outlined" size={24} color={ i % 2 === 0 ? colors.color2 : colors.color3} />
+        <Pressable
+          onPress={() => onHandleHeart(item)}
+          style={{ position: "absolute", top: 10, right: 15, zIndex: 2 }}
+        >
+          <Entypo
+            name="heart-outlined"
+            size={24}
+            color={favColor ? "red" : "black"}
+          />
         </Pressable>
         <Image
           source={{ uri: images[0]?.url }}
@@ -42,7 +79,7 @@ const dispatch = useDispatch()
             width: "100%",
             height: 200,
             resizeMode: "contain",
-            marginTop: 36
+            marginTop: 36,
             // position: "absolute",
             // left: 50,
             // top: 105,
@@ -58,18 +95,18 @@ const dispatch = useDispatch()
             // alignItems: 'center',
           }}
         > */}
-          <Text
-            // numberOfLines={2}
-            style={{
-              color: i % 2 === 0 ? colors.color2 : colors.color3,
-              fontSize: 22,
-              fontWeight: "300",
-          paddingHorizontal: 10
-            }}
-          >
-            {name}
-          </Text>
-          {/* <Text
+        <Text
+          // numberOfLines={2}
+          style={{
+            color: i % 2 === 0 ? colors.color2 : colors.color3,
+            fontSize: 22,
+            fontWeight: "300",
+            paddingHorizontal: 10,
+          }}
+        >
+          {name}
+        </Text>
+        {/* <Text
             numberOfLines={2}
             style={{
               color: i % 2 === 0 ? colors.color2 : colors.color3,
