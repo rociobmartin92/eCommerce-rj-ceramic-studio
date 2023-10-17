@@ -12,92 +12,7 @@ import Heading from "../components/Heading";
 import FooterData from "../components/FooterData";
 import {useGetProductsQuery, useGetCategoriesQuery} from "../services/productsApi"
 
-const categories = [
-  { category: "tazas", _id: 1 },
-  { category: "platos", _id: 2 },
-  { category: "mates", _id: 3 },
-  { category: "masetas", _id: 4 },
-];
-export const products = [
-  {
-    _id: 1,
-    name: "Taza Lorem Ipsum",
-    category: 1, 
-    price: 199,
-    stock: 12,
-    description: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatem neque quidem ratione?",
-    images: [
-      {
-        url: "https://i.pinimg.com/originals/70/cc/61/70cc61e9812a8bb148ee68eef39cddb7.jpg",
-      },
-    ],
-  },
-  {
-    _id: 2,
-    name: "Taza Sunshine",
-    category: 1,
-    price: 23,
-    stock: 1,
-    description: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatem neque quidem ratione?",
-    images: [
-      {
-        url: "https://www.nomadbubbles.com/wp-content/uploads/taza-cafe-ceramica-blanca.jpg",
-      },
-    ],
-  },
-  {
-    _id: 3,
-    name: "Plato roble y blanco",
-    category: 2,
-    price: 1654,
-    stock: 3,
-    description: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatem neque quidem ratione?",
-    images: [
-      {
-        url: "https://http2.mlstatic.com/D_NQ_NP_738022-MLA53444936380_012023-O.webp",
-      },
-    ],
-  },
-  {
-    _id: 4,
-    name: "Plato Bálsamo De Noche",
-    category: 2,
-    price: 19,
-    stock: 6,
-    description: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatem neque quidem ratione?",
-    images: [
-      {
-        url: "https://http2.mlstatic.com/D_NQ_NP_753904-MLA53444886993_012023-O.webp",
-      },
-    ],
-  },
-  {
-    _id: 5,
-    name: "Mate Lamore",
-    category: 3,
-    price: 199,
-    stock: 10,
-    description: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatem neque quidem ratione?",
-    images: [
-      {
-        url: "https://d2r9epyceweg5n.cloudfront.net/stores/001/546/478/products/matescera1-021374837e5b7b22d416254880278192-1024-1024.jpeg",
-      },
-    ],
-  },
-  {
-    _id: 6,
-    name: "Maceta beige y blanco",
-    category: 4,
-    price: 99,
-    stock: 16,
-    description: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatem neque quidem ratione?",
-    images: [
-      {
-        url: "https://acdn.mitiendanube.com/stores/001/652/601/products/fotomontajes-productos-casa_selvatica-maceta-combinada-arena-con-plato-11-563ace0dbc2e7a26fe16331021363223-640-0.jpg",
-      },
-    ],
-  },
-];
+
 
 const Home = () => {
   const [category, setCategory] = useState("");
@@ -105,14 +20,14 @@ const Home = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const navigate = useNavigation();
 
- const {data} = useGetCategoriesQuery()
+ const {data: categories, isLoading, error} = useGetCategoriesQuery()
+ const {data: products} = useGetProductsQuery()
 
   const categoryButtonHandler = (id) => {
     setCategory(id);
   };
 
-  console.log(useGetCategoriesQuery())
-console.log("DATA", data)
+  console.log(products)
 
   const addToCartHandler = (id, stock) => {
     console.log("add to cart", id, stock);
@@ -173,7 +88,7 @@ console.log("DATA", data)
               alignItems: "center",
             }}
           >
-            {categories.map((item, index) => (
+            {categories && categories.map((item, index) => (
               <Button
                 key={item._id}
                 style={{
@@ -200,7 +115,7 @@ console.log("DATA", data)
         {/* Products */}
         <View style={{ flex: 1 }}>
           <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-            {products.map((item, index) => {
+            {products && products.map((item, index) => {
 
             //  console.log("Item selected", item.category)
             //  console.log("Category selected", category)
