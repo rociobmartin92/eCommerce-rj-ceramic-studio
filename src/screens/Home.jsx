@@ -27,8 +27,6 @@ const Home = () => {
     setCategory(id);
   };
 
-  console.log(products)
-
   const addToCartHandler = (id, stock) => {
     console.log("add to cart", id, stock);
   };

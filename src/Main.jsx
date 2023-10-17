@@ -24,6 +24,7 @@ import ProductImages from './screens/Admin/ProductImages';
 import Camera from './screens/Camera';
 import { Provider } from 'react-redux';
 import { store } from './redux/store';
+import Favorites from './screens/Favorites';
 
 const Stack = createNativeStackNavigator();
 
@@ -47,6 +48,7 @@ const Main = () => {
           <Stack.Screen name='updateprofile' component={UpdateProfile} />
           <Stack.Screen name='changepassword' component={ChangePassword} />
           <Stack.Screen name='orders' component={Orders} />
+          <Stack.Screen name='favorites' component={Favorites} />
           <Stack.Screen name='camera' component={Camera} />
 
           {/* Forget Password */}

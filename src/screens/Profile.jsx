@@ -6,6 +6,7 @@ import ButtonBox from '../components/ButtonBox';
 import Footer from '../components/Footer';
 import Loader from '../components/Loader';
 import { useSelector } from 'react-redux';
+import FooterData from '../components/FooterData';
 
 
 
@@ -32,6 +33,9 @@ const name = useSelector(state => state.userSlice.name)
         break;
       case 'Ordenes':
         navigation.navigate('orders');
+        break;
+      case 'Favoritos':
+        navigation.navigate('favorites');
         break;
       case 'Perfil':
         navigation.navigate('updateprofile');
@@ -123,7 +127,6 @@ const name = useSelector(state => state.userSlice.name)
               <View
                 style={{
                   flexDirection: 'row',
-                  margin: 10,
                   justifyContent: 'space-evenly',
                 }}
               >
@@ -131,6 +134,11 @@ const name = useSelector(state => state.userSlice.name)
                   handler={navigateHandler}
                   text={'Contraseña'}
                   icon={'pencil'}
+                />
+                <ButtonBox
+                  handler={navigateHandler}
+                  text={'Favoritos'}
+                  icon={'star'}
                 />
                 <ButtonBox
                   handler={navigateHandler}
@@ -144,6 +152,7 @@ const name = useSelector(state => state.userSlice.name)
       </View>
 
       <Footer />
+      <FooterData />
     </SafeAreaView>
   );
 };
