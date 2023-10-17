@@ -10,6 +10,7 @@ import ProductCard from "../components/ProductCard";
 import Footer from "../components/Footer";
 import Heading from "../components/Heading";
 import FooterData from "../components/FooterData";
+import {useGetProductsQuery, useGetCategoriesQuery} from "../services/productsApi"
 
 const categories = [
   { category: "tazas", _id: 1 },
@@ -21,7 +22,7 @@ export const products = [
   {
     _id: 1,
     name: "Taza Lorem Ipsum",
-    category: 1, // id of category
+    category: 1, 
     price: 199,
     stock: 12,
     description: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatem neque quidem ratione?",
@@ -104,9 +105,14 @@ const Home = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const navigate = useNavigation();
 
+ const {data} = useGetCategoriesQuery()
+
   const categoryButtonHandler = (id) => {
     setCategory(id);
   };
+
+  console.log(useGetCategoriesQuery())
+console.log("DATA", data)
 
   const addToCartHandler = (id, stock) => {
     console.log("add to cart", id, stock);
@@ -138,7 +144,7 @@ const Home = () => {
           }}
         >
           {/* Main Heading */}
-          <Heading text1={"Nuestros"} text2={"Trabajos"} />
+          <Heading text1={"Mira mis"} text2={"Trabajos"} />
 
           {/* Searchbar */}
           {/* <View>

@@ -9,8 +9,6 @@ const ProductCard = ({ stock, item, addToCartHandler, i, navigate }) => {
   const { category, name, price, images, _id } = item;
 const dispatch = useDispatch()
 
-  console.log("ID", category);
-
   const handleOnPressProduct = () => {
    dispatch(setProduct(item))
     navigate.navigate("productdetails", { _id })
