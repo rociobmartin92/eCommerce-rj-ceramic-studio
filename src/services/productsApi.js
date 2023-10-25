@@ -12,10 +12,10 @@ export const productsApi = createApi({
       query: () => "categories.json",
     }),
     putFavorites: builder.mutation({
-      query: (body) => ({
+      query: (favorites) => ({
         url: "favorites.json",
         method: "PUT",
-        body: body,
+        body: favorites,
       }),
     }),
   }),

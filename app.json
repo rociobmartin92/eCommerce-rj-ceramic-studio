@@ -16,13 +16,16 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.rociomartin.frontend"
+      "package": "com.rociomartin.rjceramic",
+      "bundleIdentifier": "com.rociomartin.rjceramic"
     },
     "android": {
       "adaptiveIcon": {
+        "package": "com.rociomartin.rjceramic",
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.rociomartin.rjceramic"
     },
     "web": {
       "favicon": "./assets/favicon.png"

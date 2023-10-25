@@ -6,6 +6,7 @@ import {
   Image,
   TouchableOpacity,
   SafeAreaView,
+  StatusBar,
 } from 'react-native';
 
 import React, { useRef, useState } from 'react';
@@ -84,6 +85,11 @@ console.log(stock)
   return (
     
     <SafeAreaView style={{flex: 1}}>
+    <StatusBar
+
+        backgroundColor={colors.color3}
+  
+      />
     <View
       style={{
         ...defaultStyle,

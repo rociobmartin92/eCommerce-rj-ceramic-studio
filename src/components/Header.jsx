@@ -14,7 +14,7 @@ const Header = ({ back, emptyCart = false }) => {
     <>
       {back && (
         <TouchableOpacity
-          style={{ position: 'absolute', left: 20, top: 40, zIndex: 10 }}
+          style={{ position: 'absolute', left: 15, top: 30, zIndex: 10 }}
           onPress={() => {
             navigate.goBack();
           }}

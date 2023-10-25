@@ -5,38 +5,17 @@ import Header from '../components/Header';
 import Loader from '../components/Loader';
 import { Headline } from 'react-native-paper';
 import OrderItem from '../components/OrderItem';
+import { useSelector } from 'react-redux';
 
-export const orders = [
-  {
-    _id: 1,
-    shippingInfo: {
-      address: 'address address',
-      city: 'new York',
-      country: 'United States',
-      pinCode: '123',
-    },
-    createdAt: '2015-01-01T00:00:00',
-    orderStatus: 'processing',
-    paymentMethod: 'COD',
-    totalAmount: 2099,
-  },
-  {
-    _id: 2,
-    shippingInfo: {
-      address: 'address address',
-      city: 'new York',
-      country: 'United States',
-      pinCode: '123',
-    },
-    createdAt: '2015-01-01T00:00:00',
-    orderStatus: 'processing',
-    paymentMethod: 'COD',
-    totalAmount: 5099,
-  },
-];
+
+
 
 const Favorites = () => {
   const loading = false;
+
+const favorites = useSelector(state => state.favoritesSlice.favorites)
+
+console.log("Favorites in Fav Screen", favorites)
 
   return (
     <SafeAreaView style={{flex: 1}}>
@@ -50,7 +29,7 @@ const Favorites = () => {
       ) : (
         <View style={{ padding: 10, flex: 1 }}>
           <ScrollView showsVerticalScrollIndicator={false}>
-            {orders.length > 0 ? (
+            {/* {orders.length > 0 ? (
               orders.map((item, index) => (
                 <OrderItem
                   key={item._id}
@@ -65,7 +44,7 @@ const Favorites = () => {
               ))
             ) : (
               <Headline style={{ textAlign: 'center' }}>No Order Yet</Headline>
-            )}
+            )} */}
           </ScrollView>
         </View>
       )}

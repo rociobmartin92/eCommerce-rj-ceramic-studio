@@ -1,5 +1,5 @@
 import { View, Text, TouchableOpacity, ScrollView, SafeAreaView } from "react-native";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigation } from "@react-navigation/native";
 
 import { colors, defaultStyle } from "../styles/styles";
@@ -11,6 +11,10 @@ import Footer from "../components/Footer";
 import Heading from "../components/Heading";
 import FooterData from "../components/FooterData";
 import {useGetProductsQuery, useGetCategoriesQuery} from "../services/productsApi"
+import { usePutFavoritesMutation } from "../services/productsApi";
+import { useDispatch } from "react-redux";
+import { setFavoritesStore } from "../redux/slices/favoritesSlice";
+
 
 
 
@@ -20,6 +24,9 @@ const Home = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const navigate = useNavigation();
   const [favorites, setFavorites] = useState([])
+  const dispatch = useDispatch()
+
+  const [putFavorites, result] = usePutFavoritesMutation()
 
  const {data: categories, isLoading, error} = useGetCategoriesQuery()
  const {data: products} = useGetProductsQuery()
@@ -32,10 +39,18 @@ const Home = () => {
     console.log("add to cart", id, stock);
   };
 
+console.log(result)
 
 
+useEffect(() => {
+  
+  console.log(favorites, "Favorites in useEffect")
 
-console.log("Favorites", favorites)
+  dispatch(setFavoritesStore(favorites))
+  putFavorites(favorites)
+  
+}, [favorites])
+
 
   return (
   
@@ -56,14 +71,14 @@ console.log("Favorites", favorites)
         {/* Heading row */}
         <View
           style={{
-            paddingTop: 70,
+            paddingTop: 50,
             flexDirection: "row",
             justifyContent: "space-between",
             alignItems: "center",
           }}
         >
           {/* Main Heading */}
-          <Heading text1={"Mira mis"} text2={"Trabajos"} />
+          <Heading text1={"RJ Cerámica"} text2={"Nuestro trabajos"} />
 
           {/* Searchbar */}
           {/* <View>

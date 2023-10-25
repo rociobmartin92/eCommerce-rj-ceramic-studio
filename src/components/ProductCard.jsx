@@ -5,6 +5,9 @@ import { Button } from "react-native-paper";
 import { setProduct } from "../redux/slices/productSlice";
 import { useDispatch } from "react-redux";
 import { Entypo } from "@expo/vector-icons";
+import { setFavoritesStore } from "../redux/slices/favoritesSlice";
+
+
 
 const ProductCard = ({
   stock,
@@ -20,6 +23,8 @@ const [favColor, setFavColor] = useState(false)
 
   const dispatch = useDispatch();
 
+
+
   const onHandleHeart = (product) => {
     if (favorites.includes(product)) {
      
@@ -30,6 +35,7 @@ const [favColor, setFavColor] = useState(false)
 
       setFavorites(newFav)
 
+
     } else {
       const newFav = [...favorites];
 
@@ -37,12 +43,13 @@ const [favColor, setFavColor] = useState(false)
 
       setFavColor(true)
       setFavorites(newFav);
+    
     }
   };
 
 
 
-  // console.log("Favorites", favorites)
+  
 
   const handleOnPressProduct = () => {
     dispatch(setProduct(item));
@@ -52,6 +59,7 @@ const [favColor, setFavColor] = useState(false)
     <TouchableOpacity onPress={() => handleOnPressProduct()} activeOpacity={1}>
       <View
         style={{
+       
           zIndex: 1,
           elevation: 5,
           width: 220,
@@ -128,7 +136,7 @@ const [favColor, setFavColor] = useState(false)
         >
           <Button
             textColor={i % 2 === 0 ? colors.color1 : colors.color2}
-            onPress={() => addToCartHandler(id, stock)}
+            onPress={() => addToCartHandler(_id, stock)}
           >
             Ver más
           </Button>
