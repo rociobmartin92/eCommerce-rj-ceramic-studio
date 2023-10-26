@@ -7,31 +7,17 @@ import { Button } from 'react-native-paper';
 import CartItem from '../components/CartItem';
 import { useNavigation } from '@react-navigation/native';
 import { SafeAreaView } from 'react-native';
+import { useSelector } from 'react-redux';
+import { orders } from './Orders';
 
-export const cartItems = [
-  {
-    name: 'Item 1',
-    image:
-      'https://cdn.pixabay.com/photo/2023/05/23/15/26/bengal-cat-8012976_1280.jpg',
-    product: 1, //id
-    stock: 5,
-    price: 1999,
-    quantity: 5,
-  },
-  {
-    name: 'Item 2',
-    image:
-      'https://cdn.pixabay.com/photo/2023/05/27/08/59/eastern-grey-kangaroo-8021096_1280.jpg',
-    product: 2, //id
-    stock: 5,
-    price: 2999,
-    quantity: 10,
-  },
 
-];
 
 const Cart = () => {
   const navigate = useNavigation();
+
+const cartItems = useSelector(state => state.cartSlice.cartItems)
+
+console.log(cartItems)
 
   const incrementHandler = (id, quantity, stock) => {
     console.log('incrementHandler', id, quantity, stock);
@@ -67,14 +53,10 @@ const Cart = () => {
           {cartItems.map((item, index) => (
             <CartItem
               navigate={navigate}
-              key={item.product}
-              id={item.product}
-              name={item.name}
-              stock={item.stock}
-              price={item.price}
-              imgSrc={item.image}
+              key={item._id}
+              item={item}
               index={index}
-              quantity={item.quantity}
+            
               incrementHandler={incrementHandler}
               decrementHandler={decrementHandler}
             />
@@ -89,8 +71,8 @@ const Cart = () => {
           paddingHorizontal: 35,
         }}
       >
-        <Text>5 Items</Text>
-        <Text>$5</Text>
+        <Text> {cartItems.length} </Text>
+        <Text>${cartItems[0].price} </Text>
       </View>
 
       <TouchableOpacity

@@ -8,7 +8,7 @@ import {
   SafeAreaView,
   StatusBar,
 } from "react-native";
-
+import { useDispatch } from "react-redux";
 import React, { useRef, useState } from "react";
 import { colors, defaultStyle } from "../styles/styles";
 import Header from "../components/Header";
@@ -19,6 +19,7 @@ import { Avatar, Button } from "react-native-paper";
 import { Toast } from "react-native-toast-message/lib/src/Toast";
 import { useSelector } from "react-redux";
 import FooterData from "../components/FooterData";
+import { setCartStore, setOrdersStore } from "../redux/slices/cartSlice";
 
 const SLIDER_WIDTH = Dimensions.get("window").width;
 const ITEM_WIDTH = SLIDER_WIDTH;
@@ -36,7 +37,10 @@ const ProductDetails = ({ route }) => {
   const isCarousel = useRef(null);
   const [quantity, setQuantity] = useState(1);
 
+  const dispatch = useDispatch()
   const productItem = useSelector((state) => state.productSlice.productItem);
+const cartItems = useSelector(state => state.cartSlice.cartItems)
+
 
   const { name, price, stock, description, images } = productItem;
 
@@ -71,11 +75,17 @@ const ProductDetails = ({ route }) => {
     if (stock === 0)
       return Toast.show({
         type: "error",
-        text1: "Out of stock",
+        text1: "Disculpa, no hay stock",
       });
+// console.log("PRODUCT ITEM", productItem)
+
+const itemCarts = []
+
+itemCarts.push(productItem)
+dispatch(setCartStore(itemCarts))
     Toast.show({
       type: "success",
-      text1: "Added To Cart",
+      text1: "El producto fue agregado al carrito",
     });
   };
 
@@ -155,7 +165,7 @@ const ProductDetails = ({ route }) => {
           <TouchableOpacity
             style={style.btn}
             activeOpacity={0.9}
-            onPress={addToCartHandler}
+            onPress={() => addToCartHandler()}
           >
             <Button icon={"cart"} textColor={colors.color2}>
               Añadir al carrito

@@ -6,17 +6,14 @@ import { iconOptions } from '../screens/ProductDetails';
 import { useNavigation } from '@react-navigation/native';
 
 const CartItem = ({
-  name,
-  price,
-  id,
-  stock,
-  imgSrc,
-  index,
-  quantity,
+index,
+item,
   incrementHandler,
   decrementHandler,
   navigate,
 }) => {
+
+const {_id, category, description, name, price, stock, images, quantity} = item
   return (
     <View
       style={{
@@ -33,7 +30,7 @@ const CartItem = ({
           borderBottomRightRadius: 100,
         }}
       >
-        <Image source={{ uri: imgSrc }} style={styles.img} />
+        <Image source={{ uri: images[0]?.url}} style={styles.img} />
       </View>
       <View
         style={{
@@ -55,7 +52,7 @@ const CartItem = ({
         </Text>
       </View>
 
-      <View style={styles.qtyContainer}>
+      {/* <View style={styles.qtyContainer}>
         <TouchableOpacity onPress={() => decrementHandler(id, quantity)}>
           <Avatar.Icon icon={'minus'} {...iconOptions} />
         </TouchableOpacity>
@@ -64,7 +61,7 @@ const CartItem = ({
         <TouchableOpacity onPress={() => incrementHandler(id, quantity, stock)}>
           <Avatar.Icon icon={'plus'} {...iconOptions} />
         </TouchableOpacity>
-      </View>
+      </View> */}
     </View>
   );
 };

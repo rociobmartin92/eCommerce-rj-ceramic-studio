@@ -6,6 +6,8 @@ import Loader from '../components/Loader';
 import { Headline } from 'react-native-paper';
 import OrderItem from '../components/OrderItem';
 
+import { useSelector } from 'react-redux';
+
 export const orders = [
   {
     _id: 1,
@@ -37,6 +39,8 @@ export const orders = [
 
 const Orders = () => {
   const loading = false;
+
+
 
   return (
     <SafeAreaView style={{flex: 1}}>
