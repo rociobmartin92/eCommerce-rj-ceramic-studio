@@ -6,8 +6,7 @@ import { setProduct } from "../redux/slices/productSlice";
 import { useDispatch } from "react-redux";
 import { Entypo } from "@expo/vector-icons";
 import { setFavoritesStore } from "../redux/slices/favoritesSlice";
-
-
+import { useGetFavoritesQuery } from "../services/productsApi";
 
 const ProductCard = ({
   stock,
@@ -18,38 +17,27 @@ const ProductCard = ({
   setFavorites,
   favorites,
 }) => {
-const [favColor, setFavColor] = useState(false)
+  const [favColor, setFavColor] = useState(false);
   const { category, name, price, images, _id } = item;
 
   const dispatch = useDispatch();
 
-
-
   const onHandleHeart = (product) => {
-    if (favorites.includes(product)) {
-     
-      setFavColor(false)
-     
+    if (favorites) {
+      if (favorites.includes(product)) {
+        setFavColor(false);
+        const newFav = favorites.filter((el) => el !== product);
+        setFavorites(newFav);
+      } else {
+        const newFav = [...favorites];
 
-     const newFav = favorites.filter((el) => el !== product)
+        newFav.push(product);
 
-      setFavorites(newFav)
-
-
-    } else {
-      const newFav = [...favorites];
-
-      newFav.push(product);
-
-      setFavColor(true)
-      setFavorites(newFav);
-    
+        setFavColor(true);
+        setFavorites(newFav);
+      }
     }
   };
-
-
-
-  
 
   const handleOnPressProduct = () => {
     dispatch(setProduct(item));
@@ -59,7 +47,6 @@ const [favColor, setFavColor] = useState(false)
     <TouchableOpacity onPress={() => handleOnPressProduct()} activeOpacity={1}>
       <View
         style={{
-       
           zIndex: 1,
           elevation: 5,
           width: 220,

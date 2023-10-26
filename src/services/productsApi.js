@@ -18,6 +18,9 @@ export const productsApi = createApi({
         body: favorites,
       }),
     }),
+    getFavorites: builder.query({
+      query: () => "favorites.json",
+    }),
   }),
 });
 
@@ -25,4 +28,5 @@ export const {
   useGetProductsQuery,
   useGetCategoriesQuery,
   usePutFavoritesMutation,
+  useGetFavoritesQuery,
 } = productsApi;

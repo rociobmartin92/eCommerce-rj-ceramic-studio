@@ -10,7 +10,7 @@ import ProductCard from "../components/ProductCard";
 import Footer from "../components/Footer";
 import Heading from "../components/Heading";
 import FooterData from "../components/FooterData";
-import {useGetProductsQuery, useGetCategoriesQuery} from "../services/productsApi"
+import {useGetProductsQuery, useGetCategoriesQuery, useGetFavoritesQuery} from "../services/productsApi"
 import { usePutFavoritesMutation } from "../services/productsApi";
 import { useDispatch } from "react-redux";
 import { setFavoritesStore } from "../redux/slices/favoritesSlice";
@@ -28,8 +28,12 @@ const Home = () => {
 
   const [putFavorites, result] = usePutFavoritesMutation()
 
- const {data: categories, isLoading, error} = useGetCategoriesQuery()
+  const {data: fav, isLoading, error, refetch} = useGetFavoritesQuery()
+
+ const {data: categories} = useGetCategoriesQuery()
  const {data: products} = useGetProductsQuery()
+
+console.log("fav", fav)
 
   const categoryButtonHandler = (id) => {
     setCategory(id);
@@ -39,16 +43,15 @@ const Home = () => {
     console.log("add to cart", id, stock);
   };
 
-console.log(result)
+  const getFavorites = async () => {
+    await putFavorites(favorites)
+    dispatch(setFavoritesStore(favorites))
+  }
 
+useEffect(() => {  
+getFavorites()
 
-useEffect(() => {
-  
-  console.log(favorites, "Favorites in useEffect")
-
-  dispatch(setFavoritesStore(favorites))
-  putFavorites(favorites)
-  
+refetch()
 }, [favorites])
 
 
@@ -146,7 +149,7 @@ useEffect(() => {
                    key={item._id}
                    i={index}
                    setFavorites={setFavorites}
-                   favorites={favorites}
+                   favorites={fav}
                   item={item}
                    addToCartHandler={addToCartHandler}
                    navigate={navigate}
